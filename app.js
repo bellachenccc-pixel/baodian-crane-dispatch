@@ -1,4 +1,4 @@
-const STORAGE_KEY = "baodian-crane-dispatch-v2";
+const STORAGE_KEY = "baodian-crane-dispatch-v3";
 
 const weekOptions = {
   w46: {
@@ -18,31 +18,52 @@ const weekOptions = {
 const seedState = {
   selectedWeek: "w46",
   vehicles: [
-    { id: "V-BD-01", name: "保电车 01", plate: "车牌待补 · 01", kind: "保电车", capacity: "100kW", status: "可用", baseId: "B-01", pendingProfile: true },
-    { id: "V-BD-02", name: "保电车 02", plate: "车牌待补 · 02", kind: "保电车", capacity: "100kW", status: "可用", baseId: "B-01", pendingProfile: true },
-    { id: "V-C08-01", name: "8T 吊车 01", plate: "车牌待补 · 03", kind: "吊车", capacity: "8T", status: "可用", baseId: "B-02", pendingProfile: true },
-    { id: "V-C25-01", name: "25T 吊车 01", plate: "车牌待补 · 04", kind: "吊车", capacity: "25T", status: "执行中", baseId: "B-01", pendingProfile: true },
-    { id: "V-C25-02", name: "25T 吊车 02", plate: "车牌待补 · 05", kind: "吊车", capacity: "25T", status: "维保", baseId: "B-02", pendingProfile: true },
+    { id: "V-01", name: "8T 吊车", plate: "浙FDQ923", kind: "吊车", capacity: "8T", status: "可用", baseId: "B-02", company: "海盐路新吊装服务有限公司" },
+    { id: "V-02", name: "抢修车", plate: "浙F033F6", kind: "保电车", capacity: "抢修", status: "可用", baseId: "B-01", company: "嘉兴市新众汽车救援服务有限公司" },
+    { id: "V-03", name: "平板拖车", plate: "浙FD9215", kind: "保障车", capacity: "平板拖车", status: "可用", baseId: "B-01", company: "嘉兴市新众汽车救援服务有限公司" },
+    { id: "V-04", name: "重型拖车", plate: "浙FD9219", kind: "保障车", capacity: "重型拖车", status: "可用", baseId: "B-01", company: "嘉兴市新众汽车救援服务有限公司" },
+    { id: "V-05", name: "平板拖车", plate: "浙FD9383", kind: "保障车", capacity: "平板拖车", status: "可用", baseId: "B-02", company: "海盐新众汽车销售维修有限责任公司" },
+    { id: "V-06", name: "多功能车", plate: "浙F882Z7", kind: "保电车", capacity: "多功能", status: "可用", baseId: "B-02", company: "海盐新众汽车销售维修有限责任公司" },
+    { id: "V-07", name: "加宽平板车", plate: "浙FD9032", kind: "保障车", capacity: "加宽平板车", status: "可用", baseId: "B-02", company: "海盐新众汽车销售维修有限责任公司" },
+    { id: "V-08", name: "加宽平板车", plate: "浙FD9319", kind: "保障车", capacity: "加宽平板车", status: "可用", baseId: "B-02", company: "海盐新众汽车销售维修有限责任公司" },
+    { id: "V-09", name: "登高车", plate: "浙FH268Q", kind: "保障车", capacity: "登高车", status: "可用", baseId: "B-02", company: "海盐新众汽车销售维修有限责任公司" },
+    { id: "V-10", name: "多功能抢险车", plate: "浙FW0M93", kind: "保电车", capacity: "多功能抢险", status: "可用", baseId: "B-02", company: "海盐路通汽车吊装服务有限公司" },
+    { id: "V-11", name: "25T 吊车", plate: "浙FD9268", kind: "吊车", capacity: "25T", status: "可用", baseId: "B-02", company: "海盐路通汽车吊装服务有限公司" },
+    { id: "V-12", name: "多功能车", plate: "浙FD9269", kind: "保电车", capacity: "多功能", status: "可用", baseId: "B-02", company: "海盐路通汽车吊装服务有限公司" },
+    { id: "V-13", name: "货车", plate: "浙FH0977", kind: "保障车", capacity: "货车", status: "可用", baseId: "B-02", company: "海盐路通汽车吊装服务有限公司" },
+    { id: "V-14", name: "8T 吊车", plate: "浙FD9270", kind: "吊车", capacity: "8T", status: "可用", baseId: "B-02", company: "海盐路通汽车吊装服务有限公司" },
+    { id: "V-15", name: "福特全顺", plate: "浙FH9816", kind: "保障车", capacity: "福特全顺", status: "可用", baseId: "B-02", company: "海盐路通汽车吊装服务有限公司" },
+    { id: "V-16", name: "业务车", plate: "浙F6530A", kind: "保障车", capacity: "业务车", status: "可用", baseId: "B-01", company: "海盐新众电力工程有限公司" },
+    { id: "V-17", name: "登高车", plate: "浙F51PL5", kind: "保障车", capacity: "登高车", status: "可用", baseId: "B-01", company: "海盐新众电力工程有限公司" },
+    { id: "V-18", name: "货车", plate: "浙F03SA5", kind: "保障车", capacity: "货车", status: "可用", baseId: "B-01", company: "海盐新众电力工程有限公司" },
+    { id: "V-19", name: "电力工程车", plate: "浙FH8082", kind: "保障车", capacity: "电力工程车", status: "可用", baseId: "B-01", company: "海盐新众电力工程有限公司" },
+    { id: "V-20", name: "多功能拖车", plate: "浙FH6832", kind: "保障车", capacity: "多功能拖车", status: "可用", baseId: "B-01", company: "海盐新众电力工程有限公司" },
+    { id: "V-21", name: "车辆待登记", plate: "浙FTY777", kind: "保障车", capacity: "车型待补", status: "可用", baseId: "B-01", company: "海盐新众电力工程有限公司" },
+    { id: "V-22", name: "车辆待登记", plate: "浙F873XC", kind: "保障车", capacity: "车型待补", status: "可用", baseId: "B-01", company: "嘉兴市新众汽车救援服务有限公司" },
+    { id: "V-23", name: "厢式车", plate: "ZN5025XXHU5K6D", kind: "保障车", capacity: "厢式运输车", status: "可用", baseId: "B-01", company: "嘉兴市新众汽车救援服务有限公司" },
+    { id: "V-24", name: "私人车辆", plate: "浙F16M05", kind: "保障车", capacity: "私人车辆", status: "可用", baseId: "B-01", company: "王琴（私人）" },
+    { id: "V-25", name: "私人车辆", plate: "浙FH1600", kind: "保障车", capacity: "私人车辆", status: "可用", baseId: "B-01", company: "陈新峰（私人）" },
+    { id: "V-26", name: "已还车辆", plate: "浙F71JK5", kind: "保障车", capacity: "已还应急局", status: "停用", baseId: "B-01", company: "新众使用" },
   ],
   bases: [
     { id: "B-01", name: "公司东场归场点", address: "海盐县武原街道 · 详细地址待补", radius: 120 },
     { id: "B-02", name: "通元车辆归场点", address: "海盐县通元镇 · 详细地址待补", radius: 100 },
   ],
   tasks: [
-    { id: "T-4601", source: "46-47周生产计划", date: "2026-11-10", start: "12:30", end: "16:30", type: "保电", plan: "城区配网改接保电任务", location: "武原片区某变电站", area: "武原", contact: "联络人A · 联系方式待补", department: "配网作业一班", detail: "商业综合体及站用变保电，具体对象内部补录", demand: "保电车", risk: "四级", status: "已派车", assignedVehicles: ["V-BD-01"] },
-    { id: "T-4602", source: "46-47周生产计划", date: "2026-11-10", start: "07:30", end: "17:30", type: "吊车", plan: "秦山片区配电线路立杆作业", location: "通元片区作业点A", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "新建钢管塔立杆并安装横担", demand: "25T吊车", risk: "四级", status: "执行中", assignedVehicles: ["V-C25-01"] },
-    { id: "T-4603", source: "46-47周生产计划", date: "2026-11-13", start: "08:00", end: "16:00", type: "吊车", plan: "通元片区业扩吊装任务", location: "通元片区作业点B", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "立杆、横担及线路开关安装", demand: "25T吊车", risk: "四级", status: "已派车", assignedVehicles: ["V-C25-01"] },
-    { id: "T-4604", source: "46-47周生产计划", date: "2026-11-15", start: "07:00", end: "17:00", type: "联合", plan: "工业园区线路迁改协同任务", location: "澉浦片区工业园", area: "通元", contact: "联络人C · 联系方式待补", department: "线路作业一班", detail: "两处重要用户保电并同步开展线路迁改", demand: "保电车 + 25T吊车", risk: "四级", status: "待调度", assignedVehicles: ["V-BD-02"] },
+    { id: "T-4601", source: "46-47周生产计划", date: "2026-11-10", start: "12:30", end: "16:30", type: "保电", plan: "城区配网改接保电任务", location: "武原片区某变电站", area: "武原", contact: "联络人A · 联系方式待补", department: "配网作业一班", detail: "商业综合体及站用变保电，具体对象内部补录", demand: "保电车", risk: "四级", status: "已派车", assignedVehicles: ["V-02"] },
+    { id: "T-4602", source: "46-47周生产计划", date: "2026-11-10", start: "07:30", end: "17:30", type: "吊车", plan: "秦山片区配电线路立杆作业", location: "通元片区作业点A", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "新建钢管塔立杆并安装横担", demand: "25T吊车", risk: "四级", status: "执行中", assignedVehicles: ["V-11"] },
+    { id: "T-4603", source: "46-47周生产计划", date: "2026-11-13", start: "08:00", end: "16:00", type: "吊车", plan: "通元片区业扩吊装任务", location: "通元片区作业点B", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "立杆、横担及线路开关安装", demand: "25T吊车", risk: "四级", status: "已派车", assignedVehicles: ["V-11"] },
+    { id: "T-4604", source: "46-47周生产计划", date: "2026-11-15", start: "07:00", end: "17:00", type: "联合", plan: "工业园区线路迁改协同任务", location: "澉浦片区工业园", area: "通元", contact: "联络人C · 联系方式待补", department: "线路作业一班", detail: "两处重要用户保电并同步开展线路迁改", demand: "保电车 + 25T吊车", risk: "四级", status: "待调度", assignedVehicles: ["V-10"] },
     { id: "T-4605", source: "46-47周生产计划", date: "2026-11-16", start: "08:00", end: "17:00", type: "保电", plan: "变电站间隔扩建保电任务", location: "秦山片区作业点C", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "重要施工单位保电", demand: "保电车", risk: "四级", status: "待调度", assignedVehicles: [] },
     { id: "T-4606", source: "46-47周生产计划", date: "2026-11-19", start: "08:00", end: "17:00", type: "联合", plan: "于城片区环网柜更换协同任务", location: "于城片区作业点A", area: "沈荡", contact: "联络人D · 联系方式待补", department: "设备作业一班", detail: "三处重要用户保电并更换环网柜", demand: "保电车 + 25T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
     { id: "T-4607", source: "46-47周生产计划", date: "2026-11-19", start: "07:00", end: "18:00", type: "保电", plan: "社区公变同期并网保电任务", location: "于城片区作业点A", area: "沈荡", contact: "联络人E · 联系方式待补", department: "属地供电班", detail: "社区公变同期并网保电", demand: "保电车", risk: "无", status: "待调度", assignedVehicles: [] },
     { id: "T-4608", source: "46-47周生产计划", date: "2026-11-21", start: "08:30", end: "17:00", type: "联合", plan: "社区公变整体调换协同任务", location: "秦山片区社区作业点", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "两处社区公变保电并整体调换设备", demand: "保电车 + 25T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
-    { id: "T-4501", source: "45-46周生产计划", date: "2026-11-03", start: "07:30", end: "18:30", type: "保电", plan: "集镇公变保电任务", location: "秦山片区集镇作业点", area: "通元", contact: "联络人F · 联系方式待补", department: "属地供电班", detail: "公变配变东干线同期并网保电", demand: "保电车", risk: "四级", status: "已归场", assignedVehicles: ["V-BD-01"] },
-    { id: "T-4502", source: "45-46周生产计划", date: "2026-11-04", start: "06:30", end: "18:30", type: "保电", plan: "农村公变保电任务", location: "通元片区村级作业点", area: "通元", contact: "联络人G · 联系方式待补", department: "属地供电班", detail: "公变同期并网保电", demand: "保电车", risk: "四级", status: "已归场", assignedVehicles: ["V-BD-02"] },
-    { id: "T-4503", source: "45-46周生产计划", date: "2026-11-04", start: "07:30", end: "17:30", type: "联合", plan: "农村线路优化消缺协同任务", location: "通元片区村级作业点", area: "通元", contact: "联络人H · 联系方式待补", department: "设备作业一班", detail: "多处公变保电并开展线路优化消缺", demand: "保电车 + 25T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-BD-01", "V-C25-01"] },
-    { id: "T-4504", source: "45-46周生产计划", date: "2026-11-06", start: "08:30", end: "18:30", type: "联合", plan: "小区环网柜消缺协同任务", location: "于城片区小区作业点", area: "沈荡", contact: "联络人H · 联系方式待补", department: "设备作业一班", detail: "三处小区公变保电", demand: "保电车 + 8T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-BD-02", "V-C08-01"] },
-    { id: "T-4505", source: "45-46周生产计划", date: "2026-11-07", start: "08:00", end: "16:00", type: "吊车", plan: "产业园配电设备吊装任务", location: "百步片区产业园", area: "沈荡", contact: "联络人D · 联系方式待补", department: "设备作业二班", detail: "环网柜和终端设备就位及电缆卸货", demand: "8T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-C08-01"] },
-    { id: "T-4506", source: "45-46周生产计划", date: "2026-11-07", start: "07:00", end: "17:00", type: "联合", plan: "工业园区线路迁改协同任务", location: "澉浦片区工业园", area: "通元", contact: "联络人C · 联系方式待补", department: "线路作业一班", detail: "两处重要用户保电", demand: "保电车 + 25T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-BD-01", "V-C25-01"] },
+    { id: "T-4501", source: "45-46周生产计划", date: "2026-11-03", start: "07:30", end: "18:30", type: "保电", plan: "集镇公变保电任务", location: "秦山片区集镇作业点", area: "通元", contact: "联络人F · 联系方式待补", department: "属地供电班", detail: "公变配变东干线同期并网保电", demand: "保电车", risk: "四级", status: "已归场", assignedVehicles: ["V-02"] },
+    { id: "T-4502", source: "45-46周生产计划", date: "2026-11-04", start: "06:30", end: "18:30", type: "保电", plan: "农村公变保电任务", location: "通元片区村级作业点", area: "通元", contact: "联络人G · 联系方式待补", department: "属地供电班", detail: "公变同期并网保电", demand: "保电车", risk: "四级", status: "已归场", assignedVehicles: ["V-10"] },
+    { id: "T-4503", source: "45-46周生产计划", date: "2026-11-04", start: "07:30", end: "17:30", type: "联合", plan: "农村线路优化消缺协同任务", location: "通元片区村级作业点", area: "通元", contact: "联络人H · 联系方式待补", department: "设备作业一班", detail: "多处公变保电并开展线路优化消缺", demand: "保电车 + 25T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-02", "V-11"] },
+    { id: "T-4504", source: "45-46周生产计划", date: "2026-11-06", start: "08:30", end: "18:30", type: "联合", plan: "小区环网柜消缺协同任务", location: "于城片区小区作业点", area: "沈荡", contact: "联络人H · 联系方式待补", department: "设备作业一班", detail: "三处小区公变保电", demand: "保电车 + 8T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-10", "V-01"] },
+    { id: "T-4505", source: "45-46周生产计划", date: "2026-11-07", start: "08:00", end: "16:00", type: "吊车", plan: "产业园配电设备吊装任务", location: "百步片区产业园", area: "沈荡", contact: "联络人D · 联系方式待补", department: "设备作业二班", detail: "环网柜和终端设备就位及电缆卸货", demand: "8T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-01"] },
+    { id: "T-4506", source: "45-46周生产计划", date: "2026-11-07", start: "07:00", end: "17:00", type: "联合", plan: "工业园区线路迁改协同任务", location: "澉浦片区工业园", area: "通元", contact: "联络人C · 联系方式待补", department: "线路作业一班", detail: "两处重要用户保电", demand: "保电车 + 25T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-02", "V-11"] },
   ],
 };
 
@@ -225,15 +246,17 @@ function renderSchedule() {
 function renderVehicles() {
   const available = state.vehicles.filter((vehicle) => vehicle.status === "可用").length;
   const busy = state.vehicles.filter((vehicle) => vehicle.status === "执行中").length;
-  const maintenance = state.vehicles.filter((vehicle) => vehicle.status === "维保").length;
-  return `<div class="stats-row"><div class="stat-card"><span>车辆总数</span><strong>${state.vehicles.length}</strong><small>自有车辆，资料可后补</small></div><div class="stat-card"><span>当前可用</span><strong>${available}</strong><small>可进入调度</small></div><div class="stat-card"><span>执行中</span><strong>${busy}</strong><small>正在现场</small></div><div class="stat-card"><span>维保</span><strong>${maintenance}</strong><small>禁止派车</small></div></div>
-  <div class="content-grid"><section><div class="section-head"><div><h2>车辆列表</h2><p>保电车与吊车分开校验</p></div><button class="btn btn-primary btn-sm" id="add-vehicle">${icon("i-plus")}新增车辆</button></div><div class="vehicle-grid">${state.vehicles.map(renderVehicleCard).join("")}</div></section><aside class="side-note"><div><h3>车辆资料待补</h3><p>当前使用占位编号，不影响先确认调度流程。补充真实车辆时，可录入车牌、车型、吊车吨位、归场点和状态。</p></div><div><div class="mini-rule"><b>01</b><span>保电任务只能匹配保电车</span></div><div class="mini-rule"><b>02</b><span>吊车按吨位向上匹配</span></div><div class="mini-rule"><b>03</b><span>维保车辆不可参与派车</span></div></div></aside></div>`;
+  const maintenance = state.vehicles.filter((vehicle) => vehicle.status === "维保" || vehicle.status === "停用").length;
+  return `<div class="stats-row"><div class="stat-card"><span>车辆总数</span><strong>${state.vehicles.length}</strong><small>公司车辆台账</small></div><div class="stat-card"><span>当前可用</span><strong>${available}</strong><small>可进入调度</small></div><div class="stat-card"><span>执行中</span><strong>${busy}</strong><small>正在现场</small></div><div class="stat-card"><span>维保/停用</span><strong>${maintenance}</strong><small>禁止派车</small></div></div>
+  <div class="content-grid"><section><div class="section-head"><div><h2>车辆列表</h2><p>保电车、吊车参与派单，保障车只作台账记录</p></div><button class="btn btn-primary btn-sm" id="add-vehicle">${icon("i-plus")}新增车辆</button></div><div class="vehicle-grid">${state.vehicles.map(renderVehicleCard).join("")}</div></section><aside class="side-note"><div><h3>车辆台账说明</h3><p>台账数据来自《公司车辆车牌号》。可参与派单的车辆：保电车（抢修车、多功能抢险车、多功能车）与吊车（8T / 25T）；其余车辆为保障车，仅记录与查看，不参与保电、吊车派单。</p></div><div><div class="mini-rule"><b>01</b><span>保电任务只能匹配保电车</span></div><div class="mini-rule"><b>02</b><span>吊车按吨位向上匹配</span></div><div class="mini-rule"><b>03</b><span>维保/停用车辆不可参与派车</span></div></div></aside></div>`;
 }
+
+function vehicleIcon(vehicle) { return vehicle.kind === "吊车" ? "i-crane" : vehicle.kind === "保电车" ? "i-bolt" : "i-truck"; }
 
 function renderVehicleCard(vehicle) {
   const base = baseById(vehicle.baseId);
-  const statusClassName = vehicle.status === "可用" ? "" : vehicle.status === "维保" ? "maint" : "busy";
-  return `<article class="vehicle-card"><div class="vehicle-card-head"><div class="vehicle-icon ${vehicle.kind === "吊车" ? "crane" : ""}">${icon(vehicle.kind === "吊车" ? "i-crane" : "i-bolt")}</div><span class="status-dot ${statusClassName}">${esc(vehicle.status)}</span></div><h3>${esc(vehicle.name)}</h3><span class="plate">${esc(vehicle.plate)}</span><div class="vehicle-meta"><div><span>车型 / 能力</span><strong>${esc(vehicle.kind)} · ${esc(vehicle.capacity)}</strong></div><div><span>归场点</span><strong>${esc(base?.name || "未设置")}</strong></div></div></article>`;
+  const statusClassName = vehicle.status === "可用" ? "" : vehicle.status === "维保" || vehicle.status === "停用" ? "maint" : "busy";
+  return `<article class="vehicle-card"><div class="vehicle-card-head"><div class="vehicle-icon ${vehicle.kind === "吊车" ? "crane" : ""}">${icon(vehicleIcon(vehicle))}</div><span class="status-dot ${statusClassName}">${esc(vehicle.status)}</span></div><h3>${esc(vehicle.name)}</h3><span class="plate">${esc(vehicle.plate)}</span><div class="vehicle-meta"><div><span>车型 / 能力</span><strong>${esc(vehicle.kind)} · ${esc(vehicle.capacity)}</strong></div><div><span>归场点</span><strong>${esc(base?.name || "未设置")}</strong></div><div><span>所属公司</span><strong>${esc(vehicle.company || "待补")}</strong></div></div></article>`;
 }
 
 function renderBases() {
@@ -301,9 +324,9 @@ function openAssignModal(taskId) {
     const relevant = requirements.some((requirement) => vehicleMeets(vehicle, requirement));
     const selected = (task.assignedVehicles || []).includes(vehicle.id);
     const clashing = state.tasks.some((other) => other.id !== task.id && (other.assignedVehicles || []).includes(vehicle.id) && overlaps(task, other));
-    const disabled = vehicle.status === "维保" || !relevant || clashing;
-    const reason = vehicle.status === "维保" ? "车辆维保中" : !relevant ? "不满足车型或吨位" : clashing ? "同一时段已占用" : selected ? "已选中，点击可取消" : "可调度";
-    return `<button class="vehicle-option ${disabled ? "disabled" : ""}" data-toggle-vehicle="${vehicle.id}" ${disabled ? "disabled" : ""}><div class="vehicle-icon ${vehicle.kind === "吊车" ? "crane" : ""}">${icon(vehicle.kind === "吊车" ? "i-crane" : "i-bolt")}</div><div><strong>${esc(vehicle.name)} · ${esc(vehicle.plate)}</strong><span>${esc(vehicle.kind)} · ${esc(vehicle.capacity)} · ${esc(baseById(vehicle.baseId)?.name || "未设归场点")}</span></div><em>${selected ? "已选择" : reason}</em></button>`;
+    const disabled = vehicle.status === "维保" || vehicle.status === "停用" || !relevant || clashing;
+    const reason = vehicle.status === "维保" ? "车辆维保中" : vehicle.status === "停用" ? "车辆已停用" : !relevant ? "不满足车型或吨位" : clashing ? "同一时段已占用" : selected ? "已选中，点击可取消" : "可调度";
+    return `<button class="vehicle-option ${disabled ? "disabled" : ""}" data-toggle-vehicle="${vehicle.id}" ${disabled ? "disabled" : ""}><div class="vehicle-icon ${vehicle.kind === "吊车" ? "crane" : ""}">${icon(vehicleIcon(vehicle))}</div><div><strong>${esc(vehicle.name)} · ${esc(vehicle.plate)}</strong><span>${esc(vehicle.kind)} · ${esc(vehicle.capacity)} · ${esc(baseById(vehicle.baseId)?.name || "未设归场点")}</span></div><em>${selected ? "已选择" : reason}</em></button>`;
   }).join("")}</div>`;
   document.querySelectorAll("#assign-content [data-toggle-vehicle]").forEach((button) => button.addEventListener("click", () => toggleTaskVehicle(task.id, button.dataset.toggleVehicle)));
   openModal("#assign-modal");
@@ -337,7 +360,7 @@ function openBaseForm() {
 function openBaseVehicleModal(baseId) {
   const base = baseById(baseId); if (!base) return;
   document.querySelector("#assign-title").textContent = "设置归场车辆";
-  document.querySelector("#assign-content").innerHTML = `<div class="assign-summary"><div><strong>${esc(base.name)}</strong><span>${esc(base.address)}</span></div><div><strong>${base.radius}m</strong><span>电子围栏半径</span></div></div><div class="vehicle-option-list">${state.vehicles.map((vehicle) => `<button class="vehicle-option" data-set-base="${vehicle.id}"><div class="vehicle-icon ${vehicle.kind === "吊车" ? "crane" : ""}">${icon(vehicle.kind === "吊车" ? "i-crane" : "i-bolt")}</div><div><strong>${esc(vehicle.name)} · ${esc(vehicle.plate)}</strong><span>${esc(vehicle.kind)} · ${esc(vehicle.capacity)}</span></div><em>${vehicle.baseId === baseId ? "已绑定" : "点击绑定"}</em></button>`).join("")}</div>`;
+  document.querySelector("#assign-content").innerHTML = `<div class="assign-summary"><div><strong>${esc(base.name)}</strong><span>${esc(base.address)}</span></div><div><strong>${base.radius}m</strong><span>电子围栏半径</span></div></div><div class="vehicle-option-list">${state.vehicles.map((vehicle) => `<button class="vehicle-option" data-set-base="${vehicle.id}"><div class="vehicle-icon ${vehicle.kind === "吊车" ? "crane" : ""}">${icon(vehicleIcon(vehicle))}</div><div><strong>${esc(vehicle.name)} · ${esc(vehicle.plate)}</strong><span>${esc(vehicle.kind)} · ${esc(vehicle.capacity)}</span></div><em>${vehicle.baseId === baseId ? "已绑定" : "点击绑定"}</em></button>`).join("")}</div>`;
   document.querySelectorAll("#assign-content [data-set-base]").forEach((button) => button.addEventListener("click", () => { const vehicle = vehicleById(button.dataset.setBase); vehicle.baseId = baseId; saveState(); render(); openBaseVehicleModal(baseId); showToast("车辆归场点已更新"); }));
   openModal("#assign-modal");
 }
