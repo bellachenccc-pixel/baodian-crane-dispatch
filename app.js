@@ -1,6 +1,18 @@
-const STORAGE_KEY = "baodian-crane-dispatch-v4";
+const STORAGE_KEY = "baodian-crane-dispatch-v5";
 
 const weekOptions = {
+  w47: {
+    label: "第47周",
+    subtitle: "2026年11月16日—22日",
+    range: ["2026-11-16", "2026-11-22"],
+    days: [16, 17, 18, 19, 20, 21, 22],
+  },
+  w48: {
+    label: "第48周",
+    subtitle: "2026年11月23日—29日",
+    range: ["2026-11-23", "2026-11-29"],
+    days: [23, 24, 25, 26, 27, 28, 29],
+  },
   w46: {
     label: "第46—47周",
     subtitle: "2026年11月9日—22日",
@@ -16,7 +28,7 @@ const weekOptions = {
 };
 
 const seedState = {
-  selectedWeek: "w46",
+  selectedWeek: "w47",
   vehicles: [
     { id: "V-02", name: "抢修车", plate: "浙F033F6", kind: "保电车", capacity: "抢修 · 尼桑", status: "可用", baseId: "B-01", company: "嘉兴市新众汽车救援服务有限公司" },
     { id: "V-27", name: "日产", plate: "浙F035F6", kind: "保障车", capacity: "日产（车型待补）", status: "可用", baseId: "B-01", company: "嘉兴市新众汽车救援服务有限公司" },
@@ -54,20 +66,18 @@ const seedState = {
     { id: "B-02", name: "通元车辆归场点", address: "海盐县通元镇 · 详细地址待补", radius: 100 },
   ],
   tasks: [
-    { id: "T-4601", source: "46-47周生产计划", date: "2026-11-10", start: "12:30", end: "16:30", type: "保电", plan: "城区配网改接保电任务", location: "武原片区某变电站", area: "武原", contact: "联络人A · 联系方式待补", department: "配网作业一班", detail: "商业综合体及站用变保电，具体对象内部补录", demand: "保电车", risk: "四级", status: "已派车", assignedVehicles: ["V-02"] },
-    { id: "T-4602", source: "46-47周生产计划", date: "2026-11-10", start: "07:30", end: "17:30", type: "吊车", plan: "秦山片区配电线路立杆作业", location: "通元片区作业点A", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "新建钢管塔立杆并安装横担", demand: "25T吊车", risk: "四级", status: "执行中", assignedVehicles: ["V-11"] },
-    { id: "T-4603", source: "46-47周生产计划", date: "2026-11-13", start: "08:00", end: "16:00", type: "吊车", plan: "通元片区业扩吊装任务", location: "通元片区作业点B", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "立杆、横担及线路开关安装", demand: "25T吊车", risk: "四级", status: "已派车", assignedVehicles: ["V-11"] },
-    { id: "T-4604", source: "46-47周生产计划", date: "2026-11-15", start: "07:00", end: "17:00", type: "联合", plan: "工业园区线路迁改协同任务", location: "澉浦片区工业园", area: "通元", contact: "联络人C · 联系方式待补", department: "线路作业一班", detail: "两处重要用户保电并同步开展线路迁改", demand: "保电车 + 25T吊车", risk: "四级", status: "待调度", assignedVehicles: ["V-10"] },
-    { id: "T-4605", source: "46-47周生产计划", date: "2026-11-16", start: "08:00", end: "17:00", type: "保电", plan: "变电站间隔扩建保电任务", location: "秦山片区作业点C", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "重要施工单位保电", demand: "保电车", risk: "四级", status: "待调度", assignedVehicles: [] },
-    { id: "T-4606", source: "46-47周生产计划", date: "2026-11-19", start: "08:00", end: "17:00", type: "联合", plan: "于城片区环网柜更换协同任务", location: "于城片区作业点A", area: "沈荡", contact: "联络人D · 联系方式待补", department: "设备作业一班", detail: "三处重要用户保电并更换环网柜", demand: "保电车 + 25T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
-    { id: "T-4607", source: "46-47周生产计划", date: "2026-11-19", start: "07:00", end: "18:00", type: "保电", plan: "社区公变同期并网保电任务", location: "于城片区作业点A", area: "沈荡", contact: "联络人E · 联系方式待补", department: "属地供电班", detail: "社区公变同期并网保电", demand: "保电车", risk: "无", status: "待调度", assignedVehicles: [] },
-    { id: "T-4608", source: "46-47周生产计划", date: "2026-11-21", start: "08:30", end: "17:00", type: "联合", plan: "社区公变整体调换协同任务", location: "秦山片区社区作业点", area: "通元", contact: "联络人B · 联系方式待补", department: "配网作业二班", detail: "两处社区公变保电并整体调换设备", demand: "保电车 + 25T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
-    { id: "T-4501", source: "45-46周生产计划", date: "2026-11-03", start: "07:30", end: "18:30", type: "保电", plan: "集镇公变保电任务", location: "秦山片区集镇作业点", area: "通元", contact: "联络人F · 联系方式待补", department: "属地供电班", detail: "公变配变东干线同期并网保电", demand: "保电车", risk: "四级", status: "已归场", assignedVehicles: ["V-02"] },
-    { id: "T-4502", source: "45-46周生产计划", date: "2026-11-04", start: "06:30", end: "18:30", type: "保电", plan: "农村公变保电任务", location: "通元片区村级作业点", area: "通元", contact: "联络人G · 联系方式待补", department: "属地供电班", detail: "公变同期并网保电", demand: "保电车", risk: "四级", status: "已归场", assignedVehicles: ["V-10"] },
-    { id: "T-4503", source: "45-46周生产计划", date: "2026-11-04", start: "07:30", end: "17:30", type: "联合", plan: "农村线路优化消缺协同任务", location: "通元片区村级作业点", area: "通元", contact: "联络人H · 联系方式待补", department: "设备作业一班", detail: "多处公变保电并开展线路优化消缺", demand: "保电车 + 25T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-02", "V-11"] },
-    { id: "T-4504", source: "45-46周生产计划", date: "2026-11-06", start: "08:30", end: "18:30", type: "联合", plan: "小区环网柜消缺协同任务", location: "于城片区小区作业点", area: "沈荡", contact: "联络人H · 联系方式待补", department: "设备作业一班", detail: "三处小区公变保电", demand: "保电车 + 8T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-10", "V-01"] },
-    { id: "T-4505", source: "45-46周生产计划", date: "2026-11-07", start: "08:00", end: "16:00", type: "吊车", plan: "产业园配电设备吊装任务", location: "百步片区产业园", area: "沈荡", contact: "联络人D · 联系方式待补", department: "设备作业二班", detail: "环网柜和终端设备就位及电缆卸货", demand: "8T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-01"] },
-    { id: "T-4506", source: "45-46周生产计划", date: "2026-11-07", start: "07:00", end: "17:00", type: "联合", plan: "工业园区线路迁改协同任务", location: "澉浦片区工业园", area: "通元", contact: "联络人C · 联系方式待补", department: "线路作业一班", detail: "两处重要用户保电", demand: "保电车 + 25T吊车", risk: "四级", status: "已归场", assignedVehicles: ["V-02", "V-11"] },
+    { id: "T-4701", source: "47-48周生产计划（正式稿）", date: "2026-11-16", start: "07:30", end: "17:30", type: "保电", plan: "110kV万兴变间隔扩建·一期电缆改接", location: "秦山街道落塘村", area: "通元", contact: "潘加平（665110）15067365110", department: "项目一部三班", detail: "万海D154线间隔电缆拆除改接至新建环网柜，中铁大桥局保电（高风险作业，第一种工作票）", demand: "保电车", risk: "四级", status: "待调度", assignedVehicles: [] },
+    { id: "T-4702", source: "47-48周生产计划（正式稿）", date: "2026-11-18", start: "08:00", end: "17:00", type: "吊车", plan: "石泉变10kV SVG装置建设·电容器组吊装", location: "石泉变", area: "通元", contact: "范家力（660839）13615830839", department: "项目六部", detail: "11月18日—21日连续作业：搭设设备吊装平台，#1/#2电容器组拆除，#4电容器组移位", demand: "25T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
+    { id: "T-4703", source: "47-48周生产计划（正式稿）", date: "2026-11-19", start: "07:30", end: "17:30", type: "保电", plan: "110kV万兴变间隔扩建·二期电缆改接", location: "秦山街道落塘村", area: "通元", contact: "潘加平（665110）15067365110", department: "项目一部三班", detail: "码头D155线间隔电缆拆除改接（高风险作业）", demand: "保电车", risk: "四级", status: "待调度", assignedVehicles: [] },
+    { id: "T-4704", source: "47-48周生产计划（正式稿）", date: "2026-11-19", start: "07:30", end: "17:30", type: "联合", plan: "汽车检测站484环网柜消缺及公变并网", location: "于城镇三联村", area: "沈荡", contact: "袁海飞（664770）15888364770", department: "项目二部一班一组", detail: "拆除原484环网柜并新装，三联长浜二号70362公变同期并网保电", demand: "保电车 + 8T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
+    { id: "T-4705", source: "47-48周生产计划（正式稿）", date: "2026-11-23", start: "06:30", end: "17:30", type: "联合", plan: "庆丰社区七号公变整体调换", location: "秦山街道庆丰社区", area: "通元", contact: "潘加平（665110）15067365110", department: "项目一部三班", detail: "拆除40217公变箱变并整体调换，同步开展高压电缆及低压出线改接", demand: "保电车 + 25T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
+    { id: "T-4706", source: "47-48周生产计划（正式稿）", date: "2026-11-23", start: "05:45", end: "18:30", type: "保电", plan: "庆丰社区七号/八号公变同期并网保电", location: "秦山街道庆丰社区", area: "通元", contact: "王勇 13819060705", department: "通元供电所", detail: "40217、40218两台公变配变同期并网保电", demand: "保电车", risk: "无", status: "待调度", assignedVehicles: [] },
+    { id: "T-4707", source: "47-48周生产计划（正式稿）", date: "2026-11-24", start: "06:15", end: "18:30", type: "保电", plan: "官堂南变40076公变同期并网保电", location: "秦山镇官堂集镇", area: "通元", contact: "通元供电所", department: "通元供电所", detail: "40076公变配变同期并网保电", demand: "保电车", risk: "无", status: "待调度", assignedVehicles: [] },
+    { id: "T-4708", source: "47-48周生产计划（正式稿）", date: "2026-11-24", start: "07:00", end: "18:00", type: "联合", plan: "雪水港崔家浜支线优化消缺·新立电杆", location: "通元镇雪水港村", area: "通元", contact: "包骏（677818）13666777818", department: "项目二部一班一组", detail: "支线1号杆—2号杆间新立15米电杆1基，直线杆改耐张杆，同步保电", demand: "保电车 + 8T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
+    { id: "T-4709", source: "47-48周生产计划（正式稿）", date: "2026-11-24", start: "06:15", end: "19:00", type: "保电", plan: "雪水港片区5台公变同期并网保电", location: "通元镇雪水港村", area: "通元", contact: "赵海波 13967311992", department: "通元供电所", detail: "崔家浜30483、新农村二号30484、陈家浜北30515、陈家浜30367、利河桥30084共5台公变保电", demand: "保电车", risk: "无", status: "待调度", assignedVehicles: [] },
+    { id: "T-4710", source: "47-48周生产计划（正式稿）", date: "2026-11-25", start: "07:00", end: "17:00", type: "吊车", plan: "通元台区检修·路灯变拆除移位", location: "通元镇澉南村", area: "通元", contact: "袁海飞（664770）15888364770", department: "项目二部五班", detail: "拆除武袁公路十二台区路灯变变压器及附件，支线1号杆移位并立杆", demand: "8T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
+    { id: "T-4711", source: "47-48周生产计划（正式稿）", date: "2026-11-25", start: "08:00", end: "17:00", type: "吊车", plan: "百可世家配电线路改造·新立电杆", location: "望海街道双桥村", area: "武原", contact: "吴晓敏（620854）13456220854", department: "项目一部二班", detail: "11月25日—26日：新立10米电杆8基，架设导线并制作拉线", demand: "8T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
+    { id: "T-4712", source: "47-48周生产计划（正式稿）", date: "2026-11-26", start: "08:00", end: "16:30", type: "吊车", plan: "S207疏港公路线路迁改·澉浦先行段", location: "澉浦镇永新村", area: "通元", contact: "潘加平（665110）15067365110", department: "项目一部三班", detail: "路灯变变压器拆除、支线1号杆移位并立杆", demand: "8T吊车", risk: "四级", status: "待调度", assignedVehicles: [] },
   ],
 };
 
@@ -373,8 +383,8 @@ function bindDynamicClose() { document.querySelectorAll("#assign-content .close-
 
 function renderImportList() {
   const files = [
-    { title: "2026年第46周—第47周生产计划", total: 173, matched: 8, imported: state.tasks.filter((task) => task.source === "46-47周生产计划").length },
-    { title: "2026年第45周—第46周生产计划", total: 147, matched: 17, imported: state.tasks.filter((task) => task.source === "45-46周生产计划").length },
+    { title: "2026年第47周—第48周生产计划（正式稿）", total: 200, matched: 16, imported: state.tasks.filter((task) => task.source === "47-48周生产计划（正式稿）").length },
+    { title: "2026年第46周—第47周生产计划（历史演示）", total: 173, matched: 8, imported: 0 },
   ];
   document.querySelector("#import-list").innerHTML = files.map((file) => `<article class="import-file"><div class="file-icon">XLSX</div><div><strong>${esc(file.title)}</strong><span>原始 ${file.total} 行 · 筛出 ${file.matched} 条保电/吊车记录</span></div><div class="import-count"><b>${file.imported}</b>条已载入</div></article>`).join("");
 }
@@ -387,7 +397,7 @@ function showToast(message) {
 
 document.querySelectorAll(".nav-item").forEach((button) => button.addEventListener("click", () => navigate(button.dataset.page)));
 document.querySelector("#mobile-menu").addEventListener("click", () => document.querySelector("#sidebar").classList.toggle("open"));
-document.querySelector("#week-switch").addEventListener("click", () => { state.selectedWeek = state.selectedWeek === "w46" ? "w45" : "w46"; saveState(); render(); showToast(`已切换到${weekOptions[state.selectedWeek].label}`); });
+document.querySelector("#week-switch").addEventListener("click", () => { const cycle = ["w47", "w48", "w46", "w45"]; state.selectedWeek = cycle[(cycle.indexOf(state.selectedWeek) + 1) % cycle.length]; saveState(); render(); showToast(`已切换到${weekOptions[state.selectedWeek].label}`); });
 document.querySelector("#open-task").addEventListener("click", () => openModal("#task-modal"));
 document.querySelector("#open-import").addEventListener("click", () => { renderImportList(); openModal("#import-modal"); });
 document.querySelectorAll(".close-modal").forEach((button) => button.addEventListener("click", closeModals));
